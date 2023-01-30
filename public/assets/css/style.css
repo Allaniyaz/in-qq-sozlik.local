@@ -127,7 +127,7 @@ ul .word i{
   cursor: pointer;
 }
 ul .content{
-    /* height: 70vh !important; */
+    height: 57vh !important;
     overflow-y: auto !important;
 
   /* max-height: 215px;
