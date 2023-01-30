@@ -12,14 +12,14 @@ body{
   justify-content: center;
   min-height: 100vh;
   max-height: 101vh;
-  background: #4D59FB;
+  background: #DBE7FF;
 }
 ::selection{
   color: #fff;
   background: #4D59FB;
 }
 .wrapper{
-  width: 420px;
+  width: 70%;
   border-radius: 7px;
   background: #fff;
   padding: 25px 28px 25px;
@@ -127,7 +127,7 @@ ul .word i{
   cursor: pointer;
 }
 ul .content{
-    height: 70vh !important;
+    /* height: 70vh !important; */
     overflow-y: auto !important;
 
   /* max-height: 215px;

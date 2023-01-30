@@ -27,6 +27,7 @@ class DictionaryController extends Controller
 
         $data = Dictionary::where('word', $request->word)->first();
         if (empty($data)) {
+            $data['word'] = $request->word;
             $data['definition'] = "Nothing found.";
             $data = (object) $data;
         }
