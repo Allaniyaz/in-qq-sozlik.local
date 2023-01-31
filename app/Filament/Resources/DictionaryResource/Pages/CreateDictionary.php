@@ -9,4 +9,9 @@ use Filament\Resources\Pages\CreateRecord;
 class CreateDictionary extends CreateRecord
 {
     protected static string $resource = DictionaryResource::class;
+
+    protected function getRedirectUrl(): string
+    {
+        return $this->getResource()::getUrl('index');
+    }
 }
