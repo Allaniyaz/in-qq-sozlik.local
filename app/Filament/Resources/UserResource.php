@@ -16,6 +16,8 @@ use Filament\Tables\TablesServiceProvider;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Support\Facades\Hash;
+use Filament\Resources\Pages\Page;
+use Filament\Resources\Pages\CreateRecord;
 
 class UserResource extends Resource
 {
@@ -40,10 +42,16 @@ class UserResource extends Resource
                     ->required(),
                 Forms\Components\TextInput::make('password')
                     ->password()
-                    ->required(fn (string $context): bool => $context === 'create')
+                    // ->required(fn (string $context): bool => $context === 'create')
+                    ->required(fn(Page $livewire): bool => $livewire instanceof CreateRecord)
                     ->maxLength(255)
-                    ->dehydrateStateUsing(fn ($state) => Hash::make($state))
-                    ->hiddenOn('edit'),
+                    ->same('passwordConfirmation')
+                    ->dehydrated(fn ($state) => filled($state))
+                    ->dehydrateStateUsing(fn ($state) => Hash::make($state)),
+                Forms\Components\TextInput::make('passwordConfirmation')
+                    ->password()
+                    ->dehydrated(false)
+                    ->required(fn(Page $livewire): bool => $livewire instanceof CreateRecord)
             ]);
     }
 
