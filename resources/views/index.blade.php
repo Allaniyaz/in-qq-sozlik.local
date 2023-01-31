@@ -18,7 +18,7 @@
         @method('POST')
             <header>English Dictionary</header>
             <div class="search">
-                <input type="text" id="word" name="word" placeholder="Search a word" required="" spellcheck="false">
+                <input type="text" id="word" name="word" value="{{ $data->word ?? '' }}" placeholder="Search a word" required="" spellcheck="false">
                 <i class="fas fa-search"></i>
                 <span class="material-icons">close</span>
             </div>
@@ -36,7 +36,7 @@
                 <div class="content">
                 <li class="example">
                     <div class="details">
-                    <p>{{ $data->word }}</p>
+                    <p>Result</p>
                     <br>
                     <span>
                         {!! $data->definition !!}
@@ -53,6 +53,10 @@
             </ul>
             @endif
         </form>
+    </div>
+    <div style="position: absolute; bottom: 10px; text-align: center;">
+        &copy; Jamilya Erejepova
+        <br><a href="https://t.me/naleke" target="_blank">Allaniyaz</a>
     </div>
     <script>
         document.querySelector('.material-icons').addEventListener('click', function() {
